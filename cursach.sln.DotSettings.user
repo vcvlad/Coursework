@@ -1,0 +1,7 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:Boolean x:Key="/Default/ResxEditorPersonal/CheckedGroups/=_041A_0443_0440_0441_043E_0432_0430_044F_0020_0440_0430_0431_043E_0442_0430_002FRecommendation/@EntryIndexedValue">False</s:Boolean>
+	<s:Boolean x:Key="/Default/ResxEditorPersonal/CheckedGroups/=_041A_0443_0440_0441_043E_0432_0430_044F_0020_0440_0430_0431_043E_0442_0430_002FRecommendation/@EntryIndexRemoved">True</s:Boolean>
+	<s:Boolean x:Key="/Default/ResxEditorPersonal/CheckedGroups/=_041A_0443_0440_0441_043E_0432_0430_044F_0020_0440_0430_0431_043E_0442_0430_002FWindows_002FAddBudget/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/ResxEditorPersonal/CheckedGroups/=_041A_0443_0440_0441_043E_0432_0430_044F_0020_0440_0430_0431_043E_0442_0430_002FWindows_002FBudget/@EntryIndexedValue">False</s:Boolean>
+	<s:Boolean x:Key="/Default/ResxEditorPersonal/CheckedGroups/=_041A_0443_0440_0441_043E_0432_0430_044F_0020_0440_0430_0431_043E_0442_0430_002FWindows_002FRecommendation/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/ResxEditorPersonal/Initialized/@EntryValue">True</s:Boolean></wpf:ResourceDictionary>
