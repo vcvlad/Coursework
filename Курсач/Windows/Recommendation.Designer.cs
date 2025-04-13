@@ -1,4 +1,4 @@
-﻿namespace Курсовая_работа
+﻿namespace CourseWork.Windows
 {
     partial class Recommendation
     {

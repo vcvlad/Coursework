@@ -1,17 +1,7 @@
-﻿using MySql.Data.MySqlClient;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Курсовая_работа.Model;
-using Курсовая_работа.Repository;
+﻿using CourseWork.Model;
+using CourseWork.Repository;
 
-namespace Курсовая_работа
+namespace CourseWork.Windows
 {
     public partial class CategoryData : Form
     {
@@ -59,7 +49,7 @@ namespace Курсовая_работа
             dataGridView1.Rows.Clear();
             try
             {
-                List<BudgetRecords> records = _budgetInjectionsRepository.InspectBudgetRecords();
+                List<BudgetRecord> records = _budgetInjectionsRepository.GetRecordsByCategory(new BudgetRecord(){category = comboBox1.Text});
                 foreach (var record in records)
                 {
                     dataGridView1.Rows.Add(record.sum, record.category, record.date, record.ID);

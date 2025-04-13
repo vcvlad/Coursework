@@ -1,12 +1,7 @@
+using CourseWork.Model;
+using CourseWork.Repository;
 
-using MySql.Data.MySqlClient;
-using Курсовая_работа;
-using Курсовая_работа.Model;
-using Курсовая_работа.Repository;
-
-
-
-namespace programm
+namespace CourseWork.Windows
 {
 
     public partial class Budget : Form
@@ -59,7 +54,7 @@ namespace programm
             dataGridView1.Rows.Clear();
             try
             {
-                List<BudgetRecords> records = _budgetInjectionsRepository.InspectBudgetRecords();
+                List<BudgetRecord> records = _budgetInjectionsRepository.InspectBudgetRecords();
                 foreach (var record in records)
                 {
                     dataGridView1.Rows.Add(record.sum, record.category, record.date, record.ID);
@@ -127,7 +122,7 @@ namespace programm
             double sum = Convert.ToDouble(dataGridView1.CurrentRow.Cells["sum"].Value);
                     
             
-            ChangeBudget frm3 = new ChangeBudget(new BudgetRecords() 
+            ChangeBudget frm3 = new ChangeBudget(new BudgetRecord() 
                 { category = category, date = date, ID = budgetRecordId, sum = sum }, _budgetInjectionsRepository);
             frm3.Show();
             frm3.Closed += OnFormClosed;
@@ -145,7 +140,7 @@ namespace programm
 
                 try
                 {
-                    _budgetInjectionsRepository.DeleteBudgetRecord(new BudgetRecords() {ID = Convert.ToInt32(dataGridView1.CurrentRow.Cells["ID"].Value)});
+                    _budgetInjectionsRepository.DeleteBudgetRecord(new BudgetRecord() {ID = Convert.ToInt32(dataGridView1.CurrentRow.Cells["ID"].Value)});
                     LoadRecords();
                 }
                 catch (Exception exception)

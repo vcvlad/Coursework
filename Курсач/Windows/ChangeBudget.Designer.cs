@@ -1,4 +1,4 @@
-﻿namespace programm
+﻿namespace CourseWork.Windows
 {
     partial class ChangeBudget
     {

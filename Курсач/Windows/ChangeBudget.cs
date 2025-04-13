@@ -1,36 +1,22 @@
-﻿
-using MySql.Data.MySqlClient;
-using Org.BouncyCastle.Crypto;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Windows.Forms.VisualStyles;
-using Курсовая_работа.Model;
-using Курсовая_работа.Repository;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
+﻿using CourseWork.Model;
+using CourseWork.Repository;
 
-namespace programm
+namespace CourseWork.Windows
 {
     public partial class ChangeBudget : Form
     {
-        private BudgetRecords _budgetRecord;
+        private BudgetRecord _budgetRecord;
         private readonly BudgetInjectionsRepository _budgetInjectionsRepository;
         
-        public ChangeBudget(BudgetRecords budgetRecords, BudgetInjectionsRepository budgetInjectionsRepository)
+        public ChangeBudget(BudgetRecord budgetRecord, BudgetInjectionsRepository budgetInjectionsRepository)
         
         {
-            _budgetRecord = budgetRecords;
+            _budgetRecord = budgetRecord;
             _budgetInjectionsRepository = budgetInjectionsRepository; 
             InitializeComponent();
         }
 
-        public BudgetRecords _budgetRecords
+        public BudgetRecord BudgetRecord
         {
             get => _budgetRecord;
             set => _budgetRecord = value;
@@ -65,7 +51,7 @@ namespace programm
                     {
                         sum = sum * -1;
                     }
-                    if (_budgetInjectionsRepository.UpdateBudgetRecord(new BudgetRecords()
+                    if (_budgetInjectionsRepository.UpdateBudgetRecord(new BudgetRecord()
                         {
                             category = Category.Text,
                             date = Date.Value,

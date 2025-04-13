@@ -1,10 +1,9 @@
 using System.Data;
-using MySql.Data.MySqlClient;
-using programm;
-using Курсовая_работа.Model;
+using CourseWork.Model;
 using Dapper;
+using MySql.Data.MySqlClient;
 
-namespace Курсовая_работа.Repository;
+namespace CourseWork.Repository;
 
 public class BudgetInjectionsRepository
 {
@@ -19,19 +18,38 @@ public class BudgetInjectionsRepository
     public BudgetInjectionsRepository(string connection)
     {
         _connection = connection;
+        CheckDatabaseConnection();
     }
 
     #endregion
 
     #region Methods
 
-    public List<BudgetRecords> InspectBudgetRecords()
+    private bool CheckDatabaseConnection()
     {
         try
         {
             using (IDbConnection db = new MySqlConnection(_connection))
             {
-                List<BudgetRecords> records = db.Query<BudgetRecords>("SELECT * from coursework.databudget").ToList();
+                db.Open();
+                return true;
+            }
+        }
+        catch (Exception e)
+        {
+            MessageBox.Show("Подключение к базе данных недоступно" + e.Message);
+            throw;
+        }
+    }
+    
+    
+    public List<BudgetRecord> InspectBudgetRecords()
+    {
+        try
+        {
+            using (IDbConnection db = new MySqlConnection(_connection))
+            {
+                List<BudgetRecord> records = db.Query<BudgetRecord>("SELECT * from coursework.databudget").ToList();
                 return records;
             }
 
@@ -42,8 +60,24 @@ public class BudgetInjectionsRepository
             throw;
         }
     }
+    public List<BudgetRecord> GetRecordsByCategory(BudgetRecord budgetRecord)
+    {
+        try
+        {
+            using (IDbConnection db = new MySqlConnection(_connection))
+            {
+                List<BudgetRecord> records = db.Query<BudgetRecord>("SELECT * from coursework.databudget WHERE category = @category", budgetRecord).ToList();
+                return records;
+            }
 
-    public bool AddBudgetRecord(BudgetRecords budgetRecord)
+        }
+        catch (Exception e)
+        {
+            MessageBox.Show(e.Message);
+            throw;
+        }
+    }
+    public bool AddBudgetRecord(BudgetRecord budgetRecord)
     {
         try
         {
@@ -60,7 +94,6 @@ public class BudgetInjectionsRepository
             throw;
         }
 
-       
     }
 
     public bool ClearBudgetRecords()
@@ -81,7 +114,7 @@ public class BudgetInjectionsRepository
         }
     }
 
-    public bool UpdateBudgetRecord(BudgetRecords budgetRecord)
+    public bool UpdateBudgetRecord(BudgetRecord budgetRecord)
     {
         try
         {
@@ -99,7 +132,7 @@ public class BudgetInjectionsRepository
         }
     }
 
-    public bool DeleteBudgetRecord(BudgetRecords budgetRecord)
+    public bool DeleteBudgetRecord(BudgetRecord budgetRecord)
     {
         try
         {

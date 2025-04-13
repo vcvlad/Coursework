@@ -1,6 +1,6 @@
-namespace Курсовая_работа.Model;
+namespace CourseWork.Model;
 
-public class BudgetRecords
+public class BudgetRecord
 {
     public int ID { get; set; }
     public double sum { get; set; }

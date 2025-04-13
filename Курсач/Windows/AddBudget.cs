@@ -1,18 +1,7 @@
-﻿using Accessibility;
-using MySql.Data.MySqlClient;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Курсовая_работа.Model;
-using Курсовая_работа.Repository;
+﻿using CourseWork.Model;
+using CourseWork.Repository;
 
-namespace programm
+namespace CourseWork.Windows
 {
     public partial class AddBudget : Form
     {
@@ -50,7 +39,7 @@ namespace programm
 
             try
             {
-                if (_budgetInjectionsRepository.AddBudgetRecord(new BudgetRecords()
+                if (_budgetInjectionsRepository.AddBudgetRecord(new BudgetRecord()
                     {
                         sum = buff,
                         category = Category.Text,
