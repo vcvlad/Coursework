@@ -1,4 +1,6 @@
 using System.Data;
+using System.Data.Common;
+using System.Data.SqlClient;
 using CourseWork.Model;
 using Dapper;
 using MySql.Data.MySqlClient;
@@ -146,6 +148,29 @@ public class BudgetInjectionsRepository
         catch (Exception e)
         {
             MessageBox.Show(e.Message);
+            throw;
+        }
+    }
+
+    public double GetFinalSum()
+    {
+        try
+        {
+            double sum = 0;
+            using (IDbConnection db = new SqlConnection(_connection))
+            {
+                List<BudgetRecord> records = InspectBudgetRecords();
+                
+                foreach (var record in records)
+                {
+                    sum = sum + record.sum;
+                }
+            }
+            return sum;
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show(ex.Message);
             throw;
         }
     }

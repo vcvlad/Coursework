@@ -37,23 +37,34 @@ namespace CourseWork.Windows
                 buff = buff * -1;
             }
 
-            try
+            double sum = _budgetInjectionsRepository.GetFinalSum();
+            if (sum + buff <= 0)
             {
-                if (_budgetInjectionsRepository.AddBudgetRecord(new BudgetRecord()
-                    {
-                        sum = buff,
-                        category = Category.Text,
-                        date = date.Value,
-                    }))
-                {
-                    DialogResult = MessageBox.Show("Расход/доход успешно добавлен", "Успех", MessageBoxButtons.OK);
-                    this.Close();
-                }
+                MessageBox.Show("Вы вылезли за рамки бюджета", "Предупреждение", MessageBoxButtons.OK);
             }
-            catch (Exception exception)
+            else
             {
-                MessageBox.Show(exception.Message);
-                throw;
+
+                try
+                {
+                    if (_budgetInjectionsRepository.AddBudgetRecord(new BudgetRecord()
+
+                        {
+                            sum = buff,
+                            category = Category.Text,
+                            date = date.Value,
+                        }))
+
+                    {
+                        DialogResult = MessageBox.Show("Расход/доход успешно добавлен", "Успех", MessageBoxButtons.OK);
+                        this.Close();
+                    }
+                }
+                catch (Exception exception)
+                {
+                    MessageBox.Show(exception.Message);
+                    throw;
+                }
             }
         }
 

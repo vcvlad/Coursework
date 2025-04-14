@@ -37,6 +37,7 @@ namespace CourseWork.Windows
             DateColumn.ReadOnly = true;
             DateColumn.Name = "Date";
             DateColumn.CellTemplate = new DataGridViewTextBoxCell();
+            DateColumn.Width = 200;
             dataGridView1.Columns.Add(DateColumn);
 
             var IdColumn = new DataGridViewColumn();
@@ -60,16 +61,8 @@ namespace CourseWork.Windows
                     dataGridView1.Rows.Add(record.sum, record.category, record.date, record.ID);
                 }
 
-                double sum = 0;
-                for (int i = 0; i < dataGridView1.Rows.Count; i++)
-                {
-                    sum = sum + Convert.ToDouble(dataGridView1[0, i].Value);
-                }
+                double sum = _budgetInjectionsRepository.GetFinalSum();
                 CurrentSum.Text = sum.ToString();
-                if (sum < 0)
-                {
-                    Message.Text = ("Вы вылезли за рамки бюджета");
-                }
             }
             catch (Exception e)
             {
@@ -101,7 +94,6 @@ namespace CourseWork.Windows
                 dataGridView1.Rows.Clear();
 
                 CurrentSum.Clear();
-                Message.Clear();
                 try
                 {
                     _budgetInjectionsRepository.ClearBudgetRecords();
@@ -153,7 +145,7 @@ namespace CourseWork.Windows
 
         private void Recommendation_Click(object sender, EventArgs e)
         {
-            Recommendation frm4 = new Recommendation();
+            Recommendation frm4 = new Recommendation(_budgetInjectionsRepository);
             frm4.Show();
         }
 

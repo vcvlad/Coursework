@@ -34,7 +34,6 @@
             ChangeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             DeleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             CurrentSum = new System.Windows.Forms.TextBox();
-            Message = new System.Windows.Forms.TextBox();
             Add = new System.Windows.Forms.Button();
             Clear = new System.Windows.Forms.Button();
             Recommendation = new System.Windows.Forms.Button();
@@ -85,14 +84,6 @@
             CurrentSum.Size = new System.Drawing.Size(453, 27);
             CurrentSum.TabIndex = 12;
             // 
-            // Message
-            // 
-            Message.Location = new System.Drawing.Point(486, 427);
-            Message.Name = "Message";
-            Message.ReadOnly = true;
-            Message.Size = new System.Drawing.Size(288, 27);
-            Message.TabIndex = 9;
-            // 
             // Add
             // 
             Add.Location = new System.Drawing.Point(486, 12);
@@ -142,7 +133,6 @@
             Controls.Add(CategoryData);
             Controls.Add(Recommendation);
             Controls.Add(Clear);
-            Controls.Add(Message);
             Controls.Add(CurrentSum);
             Controls.Add(Add);
             Controls.Add(dataGridView1);
@@ -158,7 +148,6 @@
 
         private DataGridView dataGridView1;
         private TextBox CurrentSum;
-        private TextBox Message;
         private Button Add;
         private Button Clear;
         private ContextMenuStrip contextMenuStrip1;
